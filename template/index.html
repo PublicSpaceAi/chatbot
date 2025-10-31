@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Student ID Modal (Always shown first) -->
+    <div class="modal" id="studentIdModal" style="display: none;">
+        <div class="modal-content student-id-modal-content">
+            <div class="modal-header">
+                <h2>Welcome to Smart Chatbot! 🤖</h2>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">Please enter your student ID to get started</p>
+                <input 
+                    type="text" 
+                    id="initialStudentIdField" 
+                    placeholder="Enter your student ID" 
+                    class="edit-input"
+                    autofocus
+                >
+                <button id="initialConnectBtn" class="confirm-btn full-width">Start Chat</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-container" id="chatContainer" style="display: flex;">
+        <div class="chat-header">
+            <div class="header-content">
+                <h1>🤖 Smart Chatbot</h1>
+                <p class="subtitle">Your AI Learning Assistant</p>
+            </div>
+            <div class="header-actions">
+                <div class="profile-section" id="profileSection" style="display: flex;">
+                    <div class="profile-info" id="profileInfo">
+                        <span class="profile-icon">👤</span>
+                        <div class="profile-details">
+                            <p class="profile-label">Student ID</p>
+                            <p class="profile-id" id="headerStudentId">Guest</p>
+                        </div>
+                    </div>
+                    <button class="edit-profile-btn" id="editProfileBtn">✎</button>
+                </div>
+                <button class="settings-btn" id="settingsBtn">⚙️</button>
+            </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <h2>Welcome! 👋</h2>
+                <p>I'm your AI assistant and I remember everything about you.</p>
+                <p>How can I help you today?</p>
+            </div>
+        </div>
+
+        <div class="input-container">
+            <div class="message-input" id="messageInput">
+                <input 
+                    type="text" 
+                    id="messageField" 
+                    placeholder="Type your message..." 
+                    class="message-field"
+                >
+                <button id="sendBtn" class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="themeToggle">Dark Mode</label>
+                    <input type="checkbox" id="themeToggle" class="toggle-switch">
+                </div>
+                <div class="setting-item">
+                    <label>Current Student ID:</label>
+                    <p id="currentStudentId" class="current-id">Not connected</p>
+                </div>
+                <button id="disconnectBtn" class="disconnect-btn">Disconnect</button>
+                <button id="clearHistoryBtn" class="clear-btn">Clear Chat History</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Student ID</h2>
+                <button class="close-btn" id="closeEditProfileBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <label for="editStudentIdField">Student ID</label>
+                    <input 
+                        type="text" 
+                        id="editStudentIdField" 
+                        placeholder="Enter your new student ID" 
+                        class="edit-input"
+                    >
+                    <p class="helper-text">Changing your student ID will start a new conversation session.</p>
+                </div>
+                <div class="modal-actions">
+                    <button id="cancelEditBtn" class="cancel-btn">Cancel</button>
+                    <button id="confirmEditBtn" class="confirm-btn">Change ID</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
